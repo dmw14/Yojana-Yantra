@@ -1,8 +1,11 @@
 
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-16 md:py-24">
       {/* Indian Flag Colors Background */}
@@ -77,7 +80,12 @@ const Hero = () => {
             <Button size="lg" className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold">
               Explore Schemes
             </Button>
-            <Button size="lg" variant="outline" className="border-blue-900 text-blue-900 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-blue-900 text-blue-900 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold"
+              onClick={() => navigate("/eligibility")}
+            >
               Check Eligibility
             </Button>
           </div>
