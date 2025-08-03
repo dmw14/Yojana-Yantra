@@ -2,8 +2,11 @@
 import { Search, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="container mx-auto px-4 py-4">
@@ -34,10 +37,10 @@ const Header = () => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="outline" className="hidden md:flex">
+            <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/login")}>
               LOGIN
             </Button>
-            <Button variant="outline" className="hidden md:flex">
+            <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/account")}>
               MY ACCOUNT
             </Button>
             <div className="hidden md:block text-sm text-gray-600">
