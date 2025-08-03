@@ -3,9 +3,19 @@ import { Search, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedProfile = localStorage.getItem("userProfile");
+    if (storedProfile) {
+      const profile = JSON.parse(storedProfile);
+      setUserEmail(profile.email);
+    }
+  }, []);
   
   return (
     <header className="bg-white shadow-sm border-b">
@@ -43,9 +53,11 @@ const Header = () => {
             <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/account")}>
               MY ACCOUNT
             </Button>
-            <div className="hidden md:block text-sm text-gray-600">
-              abc@gmail.com
-            </div>
+            {userEmail && (
+              <div className="hidden md:block text-sm text-gray-600">
+                {userEmail}
+              </div>
+            )}
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="w-5 h-5" />
             </Button>
