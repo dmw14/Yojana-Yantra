@@ -55,8 +55,7 @@ const EligibilityForm = () => {
   ];
 
   const professions = [
-    "Student", "Farmer", "Entrepreneur", "Government Employee", "Private Employee", 
-    "Self-Employed", "Homemaker", "Retired", "Unemployed", "Business Owner", "Other"
+    "Student", "Farmer", "Government Employee", "Self-Employed", "Homemaker", "Retired", "Unemployed", "Business Owner", "Trader", "Other"
   ];
 
   if (isSubmitted) {
