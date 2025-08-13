@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 const schemes = [
   {
-    name: "Ladli Bahu Yojana",
+    name: "Ladki Bahin Yojana",
     category: "Women Welfare",
     summary: "₹1,500 Monthly Assistance For Eligible Women In Maharashtra.",
     status: "Ongoing",
