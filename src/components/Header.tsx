@@ -1,5 +1,5 @@
 
-import { Search, User, Menu } from "lucide-react";
+import { Search, User, Menu, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
@@ -47,6 +47,14 @@ const Header = () => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
+            <Button 
+              variant="outline" 
+              className="hidden md:flex items-center gap-2" 
+              onClick={() => navigate("/chatbot")}
+            >
+              <MessageCircle className="w-4 h-4" />
+              CHATBOT
+            </Button>
             <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/login")}>
               LOGIN
             </Button>

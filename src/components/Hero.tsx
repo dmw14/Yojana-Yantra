@@ -77,6 +77,13 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold"
+              onClick={() => navigate("/chatbot")}
+            >
+              AI Assistant
+            </Button>
             <Button size="lg" className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold">
               Explore Schemes
             </Button>
