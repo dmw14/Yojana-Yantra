@@ -50,7 +50,7 @@ const EligibilityForm = () => {
   ];
 
   const castes = [
-    "General", "SC (Scheduled Caste)", "ST (Scheduled Tribe)", "OBC (Other Backward Class)", 
+    "General(Open)", "SC (Scheduled Caste)", "ST (Scheduled Tribe)", "OBC (Other Backward Class)", 
     "EWS (Economically Weaker Section)"
   ];
 
