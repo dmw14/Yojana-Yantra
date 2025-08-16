@@ -103,9 +103,9 @@ const SchemeCategories = () => {
             Get Access to the Very Latest Schemes Now!
           </h3>
           <div className="flex justify-center space-x-4">
-            <div className="w-8 h-8 bg-orange-400 rounded-full opacity-60 animate-pulse"></div>
-            <div className="w-8 h-8 bg-white rounded-full opacity-60 animate-pulse delay-300"></div>
-            <div className="w-8 h-8 bg-green-400 rounded-full opacity-60 animate-pulse delay-500"></div>
+            <div className="w-8 h-8 bg-orange-400 rounded-full opacity-100 animate-pulse"></div>
+            <div className="w-8 h-8 bg-white rounded-full opacity-100 animate-pulse delay-300"></div>
+            <div className="w-8 h-8 bg-green-400 rounded-full opacity-100 animate-pulse delay-500"></div>
           </div>
         </div>
       </div>
