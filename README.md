@@ -16,7 +16,7 @@ This project aims to bridge that gap by:
 ---
 
 ## ✨ Features
-- 🔍 **Search & Filter** – Quickly find schemes by category, state, or eligibility  
+- 🔍 **Search & Filter** – Quickly find schemes by category or eligibility  
 - 📝 **Eligibility Checker** – Enter basic details to see which schemes apply  
 - 📂 **Organized Data** – Easy-to-read scheme descriptions and benefits  
 - 📱 **Responsive UI** – Accessible on mobile, tablet, and desktop  
