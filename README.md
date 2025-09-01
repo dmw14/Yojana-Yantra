@@ -50,6 +50,8 @@ Yojana-Yantra/
 │── vite.config.ts # Vite configuration
 └── README.md      # Documentation
 
+---
+
 ## 🚀 Getting Started  
 
 **Clone the repo**  
