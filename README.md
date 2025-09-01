@@ -1,4 +1,4 @@
-![Yojana Yantra Banner](https://raw.githubusercontent.com/dmw14/Yojana-Yantra/main/public/lovable-uploads/YojanaYantra-banner.png)
+![Yojana Yantra Banner](https://raw.githubusercontent.com/dmw14/Yojana-Yantra/main/public/lovable-uploads/YojanaYantra%20banner.png)
 
 # 🌐 Yojana Yantra  
 
