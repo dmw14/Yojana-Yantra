@@ -1,5 +1,4 @@
-[![Yojana Yantra Banner](https://raw.githubusercontent.com/dmw14/Yojana-Yantra/public/lovable-uploads/YojanaYantra banner.png)](https://raw.githubusercontent.com/<username>/<repo>/<branch>/<path-to-file>
-)
+![Yojana Yantra Banner](https://raw.githubusercontent.com/dmw14/Yojana-Yantra/main/public/lovable-uploads/YojanaYantra-banner.png)
 
 # 🌐 Yojana Yantra  
 
