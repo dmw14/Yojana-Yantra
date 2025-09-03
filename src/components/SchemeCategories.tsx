@@ -1,6 +1,7 @@
 
 import { Home, Book, User, Calendar, Info, Search } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
@@ -8,60 +9,74 @@ const categories = [
     title: "Housing Schemes",
     description: "Affordable housing & home ownership programs",
     color: "from-orange-400 to-orange-500",
-    bgColor: "bg-orange-50 hover:bg-orange-100"
+    bgColor: "bg-orange-50 hover:bg-orange-100",
+    route: "/schemes/housing"
   },
   {
     icon: Book,
     title: "Education Schemes",
     description: "Scholarships, loans & educational support",
     color: "from-green-400 to-green-500",
-    bgColor: "bg-green-50 hover:bg-green-100"
+    bgColor: "bg-green-50 hover:bg-green-100",
+    route: "/schemes/education"
   },
   {
     icon: User,
     title: "Employment & Skill Development",
     description: "Job training, skill development & employment",
     color: "from-blue-400 to-blue-500",
-    bgColor: "bg-blue-50 hover:bg-blue-100"
+    bgColor: "bg-blue-50 hover:bg-blue-100",
+    route: "/schemes/employment"
   },
   {
     icon: Calendar,
     title: "Agriculture & Farmers",
     description: "Farming support, subsidies & rural development",
     color: "from-green-500 to-green-600",
-    bgColor: "bg-green-50 hover:bg-green-100"
+    bgColor: "bg-green-50 hover:bg-green-100",
+    route: "/schemes/agriculture"
   },
   {
     icon: Info,
     title: "Health & Medical",
     description: "Healthcare schemes & medical assistance",
     color: "from-red-400 to-red-500",
-    bgColor: "bg-red-50 hover:bg-red-100"
+    bgColor: "bg-red-50 hover:bg-red-100",
+    route: "/schemes/health"
   },
   {
     icon: User,
     title: "Senior Citizens",
     description: "Pension schemes & elderly care programs",
     color: "from-purple-400 to-purple-500",
-    bgColor: "bg-purple-50 hover:bg-purple-100"
+    bgColor: "bg-purple-50 hover:bg-purple-100",
+    route: "/schemes/senior-citizens"
   },
   {
     icon: Search,
     title: "Divyangjan (Persons with Disabilities)",
     description: "Support schemes for persons with disabilities",
     color: "from-indigo-400 to-indigo-500",
-    bgColor: "bg-indigo-50 hover:bg-indigo-100"
+    bgColor: "bg-indigo-50 hover:bg-indigo-100",
+    route: "/schemes/divyangjan"
   },
   {
     icon: User,
     title: "More",
     description: "Explore additional schemes & categories",
     color: "from-gray-400 to-gray-500",
-    bgColor: "bg-gray-50 hover:bg-gray-100"
+    bgColor: "bg-gray-50 hover:bg-gray-100",
+    route: "/schemes/more"
   }
 ];
 
 const SchemeCategories = () => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (route: string) => {
+    navigate(route);
+  };
+
   return (
     <section className="bg-gradient-to-br from-blue-900 to-blue-800 py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -81,6 +96,7 @@ const SchemeCategories = () => {
             <Card 
               key={index}
               className={`${category.bgColor} border-none transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group`}
+              onClick={() => handleCategoryClick(category.route)}
             >
               <CardContent className="p-6 text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
