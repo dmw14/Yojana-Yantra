@@ -18,7 +18,7 @@ const Footer = () => {
               Empowering citizens through simplified access to government schemes and benefits.
             </p>
             <p className="text-blue-300 text-sm">
-              © 2024 Yojana Yantra. All rights reserved.
+              © 2025 Yojana Yantra. All rights reserved.
             </p>
           </div>
 
