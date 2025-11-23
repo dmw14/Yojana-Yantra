@@ -43,8 +43,8 @@ const MoreSchemes = () => {
       <div className="bg-gradient-to-r from-gray-500 to-slate-600 text-white py-16">
         <div className="container mx-auto px-4">
           <Button 
-            variant="outline" 
-            className="mb-6 text-white border-white hover:bg-white hover:text-gray-600"
+            variant="secondary" 
+            className="mb-6 bg-white text-gray-800 hover:bg-gray-100"
             onClick={() => navigate('/')}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
