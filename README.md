@@ -39,13 +39,3 @@ This project bridges that gap by:
 - 🖼️ [shadcn/ui](https://ui.shadcn.com/)  
 
 ---
-
-## 🚀 Getting Started  
-
-Clone the repo and get started:  
-
-```bash
-git clone https://github.com/dmw14/Yojana-Yantra.git
-cd Yojana-Yantra
-npm install
-npm run dev
