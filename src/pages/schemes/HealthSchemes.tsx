@@ -43,8 +43,8 @@ const HealthSchemes = () => {
       <div className="bg-gradient-to-r from-red-500 to-pink-600 text-white py-16">
         <div className="container mx-auto px-4">
           <Button 
-            variant="outline" 
-            className="mb-6 text-white border-white hover:bg-white hover:text-red-600"
+            variant="secondary" 
+            className="mb-6 bg-white text-red-600 hover:bg-red-50"
             onClick={() => navigate('/')}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

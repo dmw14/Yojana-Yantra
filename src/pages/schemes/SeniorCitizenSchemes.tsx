@@ -43,8 +43,8 @@ const SeniorCitizenSchemes = () => {
       <div className="bg-gradient-to-r from-purple-500 to-violet-600 text-white py-16">
         <div className="container mx-auto px-4">
           <Button 
-            variant="outline" 
-            className="mb-6 text-white border-white hover:bg-white hover:text-purple-600"
+            variant="secondary" 
+            className="mb-6 bg-white text-purple-600 hover:bg-purple-50"
             onClick={() => navigate('/')}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
