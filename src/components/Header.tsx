@@ -1,20 +1,30 @@
 
-import { Search, User, Menu, MessageCircle } from "lucide-react";
+import { Search, Menu, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const storedProfile = localStorage.getItem("userProfile");
-    if (storedProfile) {
-      const profile = JSON.parse(storedProfile);
-      setUserEmail(profile.email);
-    }
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
   
   return (
@@ -61,9 +71,9 @@ const Header = () => {
             <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/account")}>
               MY ACCOUNT
             </Button>
-            {userEmail && (
+            {user && (
               <div className="hidden md:block text-sm text-gray-600">
-                {userEmail}
+                {user.email}
               </div>
             )}
             <Button variant="ghost" size="sm" className="md:hidden">

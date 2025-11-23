@@ -3,36 +3,106 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { User, Mail, Shield } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 interface UserProfile {
-  name: string;
+  full_name: string | null;
   email: string;
-  isLoggedIn: boolean;
 }
 
 const Account = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in
-    const storedProfile = localStorage.getItem("userProfile");
-    if (storedProfile) {
-      setUserProfile(JSON.parse(storedProfile));
-    } else {
-      // Redirect to login if no profile found
-      navigate("/login");
-    }
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          // Fetch profile data
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .single();
+          
+          if (profile) {
+            setUserProfile({
+              full_name: profile.full_name,
+              email: profile.email,
+            });
+          }
+        } else {
+          setUserProfile(null);
+        }
+        setIsLoading(false);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      
+      if (session?.user) {
+        supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data: profile }) => {
+            if (profile) {
+              setUserProfile({
+                full_name: profile.full_name,
+                email: profile.email,
+              });
+            }
+            setIsLoading(false);
+          });
+      } else {
+        navigate("/login");
+        setIsLoading(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userProfile");
-    setUserProfile(null);
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to logout. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out.",
+    });
     navigate("/");
   };
 
-  if (!userProfile) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!user || !userProfile) {
+    return null;
   }
 
   return (
@@ -59,7 +129,7 @@ const Account = () => {
                 <User className="w-5 h-5 text-blue-600" />
                 <div>
                   <p className="text-sm font-medium text-gray-500">Full Name</p>
-                  <p className="text-lg font-semibold">{userProfile.name}</p>
+                  <p className="text-lg font-semibold">{userProfile.full_name || "Not set"}</p>
                 </div>
               </div>
               
