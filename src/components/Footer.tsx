@@ -39,6 +39,7 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-blue-200">
               <p>CALL FOR MORE INFO</p>
               <p className="text-lg font-semibold text-white">+91 8104297967</p>
+              <p className="text-lg font-semibold text-white">+91 8180842424</p>
               <p>info@yojanayantra.com</p>
             </div>
           </div>
