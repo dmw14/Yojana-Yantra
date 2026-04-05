@@ -1,31 +1,17 @@
-import { Search, Menu, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import type { User } from "@supabase/supabase-js";
+import { useState, KeyboardEvent } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-  
+  const handleSearch = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="container mx-auto px-4 py-4">
@@ -50,34 +36,18 @@ const Header = () => {
               <Input 
                 placeholder="Search government schemes..." 
                 className="pl-10 bg-gray-50 border-gray-200"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
               />
             </div>
           </div>
 
-          {/* User Actions */}
-          <div className="flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              className="hidden md:flex items-center gap-2" 
-              onClick={() => navigate("/chatbot")}
-            >
-              <MessageCircle className="w-4 h-4" />
-              CHATBOT
-            </Button>
-            <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/login")}>
-              LOGIN
-            </Button>
-            <Button variant="outline" className="hidden md:flex" onClick={() => navigate("/account")}>
-              MY ACCOUNT
-            </Button>
-            {user && (
-              <div className="hidden md:block text-sm text-gray-600">
-                {user.email}
-              </div>
-            )}
-            <Button variant="ghost" size="sm" className="md:hidden">
-              <Menu className="w-5 h-5" />
-            </Button>
+          {/* Tagline */}
+          <div className="hidden lg:flex items-center">
+            <span className="text-sm font-medium text-blue-900 bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100 shadow-sm">
+              Empowering Citizens. Enabling Growth.
+            </span>
           </div>
         </div>
 
@@ -88,6 +58,9 @@ const Header = () => {
             <Input 
               placeholder="Search government schemes..." 
               className="pl-10 bg-gray-50 border-gray-200"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearch}
             />
           </div>
         </div>
