@@ -2,7 +2,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SchemeCategories from "@/components/SchemeCategories";
-import TrendingSchemes from "@/components/TrendingSchemes";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,7 +10,6 @@ const Index = () => {
       <Header />
       <Hero />
       <SchemeCategories />
-      <TrendingSchemes />
       <Footer />
     </div>
   );
