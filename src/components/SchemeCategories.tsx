@@ -78,7 +78,7 @@ const SchemeCategories = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-blue-900 to-blue-800 py-16 md:py-24">
+    <section id="scheme-categories" className="bg-gradient-to-br from-blue-900 to-blue-800 py-16 md:py-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">

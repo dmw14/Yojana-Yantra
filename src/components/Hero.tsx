@@ -77,19 +77,23 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold"
               onClick={() => navigate("/chatbot")}
             >
               AI Assistant
             </Button>
-            <Button size="lg" className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold">
+            <Button
+              size="lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold"
+              onClick={() => document.getElementById("scheme-categories")?.scrollIntoView({ behavior: "smooth" })}
+            >
               Explore Schemes
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="border-blue-900 text-blue-900 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold"
               onClick={() => navigate("/eligibility")}
             >
