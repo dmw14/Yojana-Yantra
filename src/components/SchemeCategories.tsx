@@ -50,7 +50,7 @@ const categories = [
     description: "Pension schemes & elderly care programs",
     color: "from-purple-400 to-purple-500",
     bgColor: "bg-purple-50 hover:bg-purple-100",
-    route: "/schemes/senior-citizens"
+    route: "/schemes/senior"
   },
   {
     icon: Search,
@@ -58,7 +58,7 @@ const categories = [
     description: "Support schemes for persons with disabilities",
     color: "from-indigo-400 to-indigo-500",
     bgColor: "bg-indigo-50 hover:bg-indigo-100",
-    route: "/schemes/divyangjan"
+    route: "/schemes/disability"
   },
   {
     icon: User,
@@ -66,7 +66,7 @@ const categories = [
     description: "Explore additional schemes & categories",
     color: "from-gray-400 to-gray-500",
     bgColor: "bg-gray-50 hover:bg-gray-100",
-    route: "/schemes/more"
+    route: "/schemes/other"
   }
 ];
 
@@ -93,7 +93,7 @@ const SchemeCategories = () => {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {categories.map((category, index) => (
-            <Card 
+            <Card
               key={index}
               className={`${category.bgColor} border-none transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group`}
               onClick={() => handleCategoryClick(category.route)}
